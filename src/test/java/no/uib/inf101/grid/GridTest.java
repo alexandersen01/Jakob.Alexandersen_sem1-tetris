@@ -17,7 +17,7 @@ public class GridTest {
   
   @Test
   void gridTestGetRowsAndCols() {
-    IGrid<Integer> grid = new Grid<>(3, 2);
+    IGrid<Integer> grid = new Grid<Integer>(3, 2);
     assertEquals(3, grid.rows());
     assertEquals(2, grid.cols());
   }
@@ -25,7 +25,7 @@ public class GridTest {
   @Test
   void gridSanityTest() {
     String defaultValue = "x";
-    IGrid<String> grid = new Grid<>(3, 2, defaultValue);
+    IGrid<String> grid = new Grid<String>(3, 2, defaultValue);
     
     assertEquals(3, grid.rows());
     assertEquals(2, grid.cols());

@@ -10,6 +10,12 @@ public class TetrisMain {
   
   public static void main(String[] args) {
     SampleView view = new SampleView();
+    //TetrisBoard board = new TetrisBoard(15, 10);
+
+    //TetrisModel model = new TetrisModel(board, new RandomTetrinoFactory());
+
+    //TetrisView view = new TetrisView(model);
+    //new TetrisController(model, view);
 
     // The JFrame is the "root" application window.
     // We here set som properties of the main window, 
