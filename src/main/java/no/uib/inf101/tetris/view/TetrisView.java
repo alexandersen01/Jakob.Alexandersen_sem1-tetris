@@ -53,6 +53,8 @@ public class TetrisView extends JPanel {
         double height = this.getHeight() - 2 * margin;
         
         Rectangle2D rect = new Rectangle2D.Double(x, y, width, height);
+
+
         g.setColor(frameColor);
         g.fill(rect);
         
@@ -61,6 +63,7 @@ public class TetrisView extends JPanel {
         
         //draw the cells
         drawCells(g, this.model.getTilesOnBoard(), cps, this.colorTheme);
+        drawCells(g, this.model.getTilesOnTetromino(), cps, this.colorTheme);
         
     }
 

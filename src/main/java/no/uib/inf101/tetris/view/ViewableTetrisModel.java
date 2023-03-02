@@ -16,5 +16,11 @@ public interface ViewableTetrisModel {
      * @return All positions of tiles on the board
      */
     Iterable<GridCell<Character>> getTilesOnBoard();
+
+    /**
+     * Makes the cells of the current tetromino iterable
+     * @return something, idk i'll get back to you
+     */
+    Iterable<GridCell<Character>> getTilesOnTetromino();
 }
 

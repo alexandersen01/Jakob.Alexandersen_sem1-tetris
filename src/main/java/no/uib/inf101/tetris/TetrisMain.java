@@ -3,8 +3,11 @@ package no.uib.inf101.tetris;
 import javax.swing.JFrame;
 
 import no.uib.inf101.grid.CellPosition;
+import no.uib.inf101.tetris.controller.TetrisController;
 import no.uib.inf101.tetris.model.TetrisBoard;
 import no.uib.inf101.tetris.model.TetrisModel;
+import no.uib.inf101.tetris.model.tetromino.RandomTetrominoFactory;
+import no.uib.inf101.tetris.model.tetromino.TetrominoFactory;
 import no.uib.inf101.tetris.view.TetrisView;
 
 
@@ -15,6 +18,7 @@ public class TetrisMain {
   public static void main(String[] args) {
 
     TetrisBoard board = new TetrisBoard(20, 10);
+    TetrominoFactory factory = new RandomTetrominoFactory();
 
     //create green tile at position (0,0)
     board.set(new CellPosition(0, 0), 'g');
@@ -22,15 +26,15 @@ public class TetrisMain {
     board.set(new CellPosition(19, 0), 'b');
     board.set(new CellPosition(19, 9), 'r');
 
-
-    TetrisModel model = new TetrisModel(board);
+    
+    TetrisModel model = new TetrisModel(board, factory);
     TetrisView view = new TetrisView(model);
+    // TetrisModel model = new TetrisModel(board, new RandomTetrinoFactory());
 
-    //TetrisBoard board = new TetrisBoard(15, 10);
 
-    //TetrisModel model = new TetrisModel(board, new RandomTetrinoFactory());
 
-    //new TetrisController(model, view);
+
+    new TetrisController(model, view);
 
     // The JFrame is the "root" application window.
     // We here set som properties of the main window, 
