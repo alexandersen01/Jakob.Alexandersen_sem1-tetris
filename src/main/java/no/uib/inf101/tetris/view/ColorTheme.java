@@ -26,5 +26,12 @@ public interface ColorTheme {
      * @return a color
      */
     Color getBackgroundColor();
+
+    //create method gameOverColor with no param and return a color
+    /**
+     * Get the color of the game over screen
+     * @return a color
+     */
+    Color gameOverColor();
     
 }

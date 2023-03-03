@@ -3,6 +3,7 @@ package no.uib.inf101.tetris.view;
 import javax.swing.JPanel;
 
 import no.uib.inf101.grid.GridCell;
+import no.uib.inf101.tetris.model.GameState;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -64,10 +65,18 @@ public class TetrisView extends JPanel {
         //draw the cells
         drawCells(g, this.model.getTilesOnBoard(), cps, this.colorTheme);
         drawCells(g, this.model.getTilesOnTetromino(), cps, this.colorTheme);
+        if(this.model.getGameState() == GameState.GAME_OVER) {
+            drawGameOver(g);
+        }
+        if(this.model.getGameState() == GameState.ACTIVE_STATE){
+            frameCounter(g);
+        }
+
+
         
     }
 
-    //create method drawCells with param Graphics2D g2, Iterable<GridCell<Character>> cells, CellPositionToPixelConverter converter and ColorTheme colorTheme
+
     public static void drawCells(Graphics2D g, Iterable<GridCell<Character>> grid, CellPositionToPixelConverter cps, ColorTheme colorTheme) {
         
         for (GridCell<Character> cell : grid) {
@@ -77,4 +86,34 @@ public class TetrisView extends JPanel {
             g.fill(bounds);
         }
     }
+
+    //create method to draw a game over message when gamestate is GAME_OVER
+    public void drawGameOver(Graphics2D g) {
+        //get color from colorTheme
+        Color frameColor = colorTheme.gameOverColor();
+        double margin = TetrisView.OUTERMARGIN;
+        double x = TetrisView.dimX;
+        double y = TetrisView.dimY;
+
+        double width = this.getWidth() - 2 * margin;
+        double height = this.getHeight() - 2 * margin;
+        
+        Rectangle2D rect = new Rectangle2D.Double(x, y, width, height);
+
+
+        
+            g.setColor(frameColor);
+            g.fill(rect);
+            g.setColor(Color.WHITE);
+            g.setFont(g.getFont().deriveFont(50.0f));
+            g.drawString("Game Over!", 170, 400);
+
+}
+
+    public void frameCounter(Graphics2D g){
+        g.setColor(Color.GREEN);
+        g.setFont(g.getFont().deriveFont(14.0f));
+        g.drawString("FPS: 144", 10, 20);
+    }
+
 }

@@ -141,5 +141,5 @@ public final class Tetromino implements Iterable<GridCell<Character>>{
         }
         return new Tetromino(c, newShape, pos);
     }
-
+    
 }

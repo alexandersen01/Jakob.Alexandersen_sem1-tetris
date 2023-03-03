@@ -35,4 +35,9 @@ public class DefaultColorTheme implements ColorTheme{
         return null;
     }
     
+    @Override
+    public Color gameOverColor() {
+        return new Color(0, 0, 0, 128);
+    }
+
 }

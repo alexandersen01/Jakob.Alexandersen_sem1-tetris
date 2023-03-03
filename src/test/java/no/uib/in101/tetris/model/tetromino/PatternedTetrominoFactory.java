@@ -13,7 +13,6 @@ public class PatternedTetrominoFactory implements TetrominoFactory {
     public PatternedTetrominoFactory(String pattern) {
         //every time getNext is called, it will return the next tetromino in the pattern
         this.pattern = pattern;
-        this.index = index;
     }
 
     @Override

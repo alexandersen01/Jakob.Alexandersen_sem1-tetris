@@ -8,11 +8,13 @@ import no.uib.inf101.tetris.model.tetromino.Tetromino;
 import no.uib.inf101.tetris.model.tetromino.TetrominoFactory;
 import no.uib.inf101.tetris.view.ViewableTetrisModel;
 
+
 public class TetrisModel implements ViewableTetrisModel, ControllableTetrisModel {
 
     private TetrisBoard board;
     private TetrominoFactory factory;
     private Tetromino currentTetromino; //represents a falling tetromino
+    public GameState state = GameState.ACTIVE_STATE;
 
     // Constructor with the parameter TetrisBoard
     public TetrisModel (TetrisBoard board, TetrominoFactory factory) {
@@ -75,5 +77,56 @@ public class TetrisModel implements ViewableTetrisModel, ControllableTetrisModel
         }
         return false;
     }
+
+    @Override
+    public boolean DropTetromino() {
+        //move the tetromino all the way down
+        while(MoveTetromino(1, 0)) {
+            //do nothing
+        }
+        glueTetromino();
+        board.removeRow();
+        newTetromino();
+        return true;
+    }
+
+    //create helper method to get a new tetromino
+    public void newTetromino() {
+        currentTetromino = factory.getNext().shiftedToTopCenterOf(board);
+        //check if the new tetromino is legal
+        if(!isLegal(currentTetromino)) {
+            state = GameState.GAME_OVER;
+        }
+    }
+
+    //create helper method to glue the tetromino to the board
+    public void glueTetromino() {
+        for (GridCell<Character> cell : currentTetromino) {
+            board.set(cell.pos(), cell.value());
+        }
+    }
+
+    @Override
+    public GameState getGameState() {
+        return state;
+    }
+
+    @Override
+    public int getTickTime() {
+        return 450;
+    }
+
+    @Override
+    public void clockTick() {
+        //move the tetromino down one row
+        MoveTetromino(1, 0);
+        //if it cannot move down, glue the tetromino to the board
+        if(!MoveTetromino(1, 0)) {
+            glueTetromino();
+            board.removeRow();
+            newTetromino();
+        }
+    }
+    
 
 }
