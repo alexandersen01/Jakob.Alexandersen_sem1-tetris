@@ -19,15 +19,8 @@ public class TetrisMain {
 
     TetrisBoard board = new TetrisBoard(20, 10);
     TetrominoFactory factory = new RandomTetrominoFactory();
-
-
-
-    
     TetrisModel model = new TetrisModel(board, factory);
     TetrisView view = new TetrisView(model);
-    // TetrisModel model = new TetrisModel(board, new RandomTetrinoFactory());
-
-
 
 
     new TetrisController(model, view);

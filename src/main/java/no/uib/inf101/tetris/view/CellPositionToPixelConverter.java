@@ -4,6 +4,10 @@ import java.awt.geom.Rectangle2D;
 import no.uib.inf101.grid.CellPosition;
 import no.uib.inf101.grid.GridDimension;
 
+
+/**
+ * A class that converts cell positions to pixel positions
+ */
 public class CellPositionToPixelConverter {
   //create instance variable Rectangle2D object box
   private Rectangle2D box;

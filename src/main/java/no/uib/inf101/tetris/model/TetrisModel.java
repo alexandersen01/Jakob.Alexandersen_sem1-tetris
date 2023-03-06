@@ -51,7 +51,12 @@ public class TetrisModel implements ViewableTetrisModel, ControllableTetrisModel
         return false;
     }
 
-//create helper method to check if tetromino within the board and not occupying any colored cells
+
+    /**
+     * Checks if the tetromino is legal (as in within the board and not occupying any colored cells)
+     * @param tetromino
+     * @return true or false
+     */
     public boolean isLegal(Tetromino tetromino) {
         //loop through the cells in tetromino
         for (GridCell<Character> cell : tetromino) {
@@ -90,7 +95,9 @@ public class TetrisModel implements ViewableTetrisModel, ControllableTetrisModel
         return true;
     }
 
-    //create helper method to get a new tetromino
+    /**
+     * Gets a new tetromino and checks if it is legal. If it is illegal, change {@link #state} to {@link GameState#GAME_OVER
+     */
     public void newTetromino() {
         currentTetromino = factory.getNext().shiftedToTopCenterOf(board);
         //check if the new tetromino is legal
@@ -99,7 +106,9 @@ public class TetrisModel implements ViewableTetrisModel, ControllableTetrisModel
         }
     }
 
-    //create helper method to glue the tetromino to the board
+    /**
+     * Glues the tetromino to the board
+     */
     public void glueTetromino() {
         for (GridCell<Character> cell : currentTetromino) {
             board.set(cell.pos(), cell.value());

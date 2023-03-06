@@ -21,6 +21,10 @@ public class TetrisView extends JPanel {
     static final double dimY = 0;
     
     // Constructor
+    /**
+     * Create a the window for the game
+     * @param model
+     */
     public TetrisView(ViewableTetrisModel model) {
 
         colorTheme = new DefaultColorTheme();
@@ -43,7 +47,11 @@ public class TetrisView extends JPanel {
     }
 
 
-    //create method drawGame with param Graphics2D g to draw the elements of the game
+
+    /**
+     * Draw the game
+     * @param g
+     */
     public void drawGame(Graphics2D g) {
         //get color from colorTheme
         Color frameColor = colorTheme.getFrameColor();
@@ -76,7 +84,13 @@ public class TetrisView extends JPanel {
         
     }
 
-
+    /**
+     * Draw the cells
+     * @param g
+     * @param grid
+     * @param cps
+     * @param colorTheme
+     */
     public static void drawCells(Graphics2D g, Iterable<GridCell<Character>> grid, CellPositionToPixelConverter cps, ColorTheme colorTheme) {
         
         for (GridCell<Character> cell : grid) {
@@ -87,7 +101,11 @@ public class TetrisView extends JPanel {
         }
     }
 
-    //create method to draw a game over message when gamestate is GAME_OVER
+
+    /**
+     * Draw game over message if {@code model.getGameState() == GameState.GAME_OVER}
+     * @param g
+     */
     public void drawGameOver(Graphics2D g) {
         //get color from colorTheme
         Color frameColor = colorTheme.gameOverColor();
@@ -109,7 +127,11 @@ public class TetrisView extends JPanel {
             g.drawString("Game Over!", 170, 400);
 
 }
-
+    /**
+     * Draws the frame counter. 
+     * NOTE: The counter is static at 144 fps, and is only used for "testing purposes"
+     * @param g
+     */
     public void frameCounter(Graphics2D g){
         g.setColor(Color.GREEN);
         g.setFont(g.getFont().deriveFont(14.0f));

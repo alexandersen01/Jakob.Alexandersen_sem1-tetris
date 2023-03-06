@@ -12,7 +12,11 @@ import no.uib.inf101.grid.Grid;
 public class TetrisBoard extends Grid<Character> {
 
 
-
+    /**
+     * Create a new TetrisBoard with the given rows and cols
+     * @param rows
+     * @param cols
+     */
     public TetrisBoard(int rows, int cols) {
         super(rows, cols);
         //initialize the grid with empty cells
@@ -27,7 +31,13 @@ public class TetrisBoard extends Grid<Character> {
         return "g--y\n----\nr--b";
     }
 
-    //implement method to check if an element exists in a row
+
+    /**
+     * Checks if a row contains a given element
+     * @param row
+     * @param c
+     * @return
+     */
     public boolean rowContains(int row, char c) {
         for (int i = 0; i < cols(); i++) {
             if (get(new CellPosition(row, i)) == c) {
@@ -37,14 +47,24 @@ public class TetrisBoard extends Grid<Character> {
         return false;
     }
 
-    //implement a method that sets all the elements in a row to a given value
+
+    /**
+     * Sets all the elements in a row to a given value
+     * @param row
+     * @param element
+     */
     public void setRow(int row, char element) {
         for (int i = 0; i < cols(); i++) {
             set(new CellPosition(row, i), element);
         }
     }
 
-    //implement a method that copies all the values from a given row to another row
+
+    /**
+     * Copies all the values from a given row to another row
+     * @param from
+     * @param to
+     */
     public void copyRow(int from, int to) {
         for(int i = 0; i < cols(); i++){
             CellPosition fromPos = new CellPosition(from, i);
@@ -53,7 +73,11 @@ public class TetrisBoard extends Grid<Character> {
         }
     }
 
-    //implement a method that removes a row and moves all the rows above it down
+
+    /**
+     * Removes a row and moves all the rows above it down
+     * @return rows removed
+     */
     public int removeRow(){
         int rowsremoved = 0;
         int oldRow = rows() - 1;
@@ -73,6 +97,8 @@ public class TetrisBoard extends Grid<Character> {
             oldRow--;
         }
         return rowsremoved;
+        
+
     }
 
 

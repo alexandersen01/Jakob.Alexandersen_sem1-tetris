@@ -22,9 +22,13 @@ public final class Tetromino implements Iterable<GridCell<Character>>{
         this.pos = pos;
 
     }
-
+    /**
+     * Returns a new tetromino based on the char c
+     * @param c
+     * @return a new tetromino
+     */
     static public Tetromino newTetromino(char c) {
-        //return a tetromino based on the char c
+
         switch(c) {
             case 'I':
                 return new Tetromino('I', new boolean[][]{{false, false, false, false},
@@ -69,11 +73,22 @@ public final class Tetromino implements Iterable<GridCell<Character>>{
 
     }
 
+    /**
+     * Returns a new tetromino with the same shape and color, but shifted by deltaRow and deltaCol
+     * @param deltaRow
+     * @param deltaCol
+     * @return new tetromino that is shifted
+     */
     public Tetromino shiftedBy(int deltaRow, int deltaCol) {
-        //return a new tetromino with the same shape and color, but shifted by deltaRow and deltaCol
         return new Tetromino(c, shape, pos.shiftedBy(deltaRow, deltaCol));
     }
 
+
+    /**
+     * Puts the tetromino in the top center of the grid
+     * @param dim
+     * @return a correctly positioned tetromino
+     */
     public Tetromino shiftedToTopCenterOf(GridDimension dim) {
 
         int centerCol = dim.cols() / 2;
@@ -131,7 +146,9 @@ public final class Tetromino implements Iterable<GridCell<Character>>{
         return true;
     }
 
-    //create a new tetromino with the same shape and color, but rotated 90 degrees clockwise
+    /**
+     * Returns a new tetromino that is rotated 90 degrees clockwise
+     */
     public Tetromino rotated() {
         boolean[][] newShape = new boolean[shape[0].length][shape.length];
         for(int i = 0; i < shape.length; i++) {

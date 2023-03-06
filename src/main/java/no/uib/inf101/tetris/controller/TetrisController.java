@@ -70,6 +70,10 @@ public class TetrisController implements java.awt.event.KeyListener {
 
     }
 
+    /**
+     * This method gets called every tick in order to move the faling piece every tick
+     * @param event
+     */
     public void clockTick(ActionEvent event){
 
         if(model.getGameState() != GameState.GAME_OVER) {
@@ -79,7 +83,10 @@ public class TetrisController implements java.awt.event.KeyListener {
         }
     }
 
-    //create helper method to get the right delay from the model and call on setDelay and setInitialDelay
+
+    /**
+     * Helper method to get the right delay from the model and call on setDelay and setInitialDelay
+     */
     public void setDelay() {
         timer.setDelay(model.getTickTime());
         timer.setInitialDelay(model.getTickTime());
