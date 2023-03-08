@@ -13,7 +13,7 @@ import javax.sound.midi.Sequencer;
  * </code>
  */
 public class TetrisSong implements Runnable {
-    private static final String TETRISMUSIC = "heaven.midi";
+    private static final String TETRISMUSIC = "dre.midi";
     private Sequencer sequencer;
 
     @Override

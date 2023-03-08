@@ -128,7 +128,6 @@ public class TetrisModel implements ViewableTetrisModel, ControllableTetrisModel
     @Override
     public void clockTick() {
         //move the tetromino down one row
-        MoveTetromino(1, 0);
         //if it cannot move down, glue the tetromino to the board
         if(!MoveTetromino(1, 0)) {
             glueTetromino();
