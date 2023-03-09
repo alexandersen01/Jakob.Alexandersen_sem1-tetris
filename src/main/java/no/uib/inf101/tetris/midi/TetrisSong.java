@@ -1,6 +1,9 @@
 package no.uib.inf101.tetris.midi;
 
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.sound.midi.MidiSystem;
 import javax.sound.midi.Sequencer;
@@ -13,7 +16,13 @@ import javax.sound.midi.Sequencer;
  * </code>
  */
 public class TetrisSong implements Runnable {
-    private static final String TETRISMUSIC = "dre.midi";
+    //create a list of all the midi files
+    static List<String> midiFiles = Arrays.asList("acdc.midi", "dre.midi", "eminem.midi", "friends.midi",
+    "heaven.midi", "hell.midi", "jayz.midi", "meme.midi", "queen.midi", "tetris.midi");
+    //pick a random element from midiFiles
+    static String randomMidi = midiFiles.get((int) (Math.random() * midiFiles.size()));
+
+    private static final String TETRISMUSIC = randomMidi;
     private Sequencer sequencer;
 
     @Override

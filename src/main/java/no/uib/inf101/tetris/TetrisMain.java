@@ -38,6 +38,7 @@ public class TetrisMain {
     // Call these methods to actually display the window
     frame.pack();
     frame.setVisible(true);
+
   }
   
 }

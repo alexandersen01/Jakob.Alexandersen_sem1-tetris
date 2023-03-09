@@ -1,7 +1,7 @@
 package no.uib.inf101.tetris.controller;
 
 import java.awt.event.KeyEvent;
-import java.awt.event.ActionEvent;
+import java.awt.event.ActionEvent; 
 
 import javax.swing.Timer;
 
@@ -9,12 +9,15 @@ import no.uib.inf101.tetris.midi.TetrisSong;
 import no.uib.inf101.tetris.model.GameState;
 import no.uib.inf101.tetris.view.TetrisView;
 
+
 public class TetrisController implements java.awt.event.KeyListener {
     
     public ControllableTetrisModel model;
     public TetrisView view;
     private Timer timer;
     private TetrisSong song = new TetrisSong();
+    public GameState state;
+
     
 
     public TetrisController(ControllableTetrisModel model, TetrisView view) {
@@ -53,9 +56,26 @@ public class TetrisController implements java.awt.event.KeyListener {
         else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
             model.MoveTetromino(1, 0);
         }
+        //if the key pressed is the p key, pause the game
+        else if (e.getKeyCode() == KeyEvent.VK_P) {
+            if(model.getGameState() == GameState.ACTIVE_STATE) {
+                model.pause();
+                timer.stop();
+                song.doStopMidiSounds();
+            }
+            else if(model.getGameState() == GameState.PAUSED) {
+                model.resume();
+                timer.start();
+                song.run();
+            }
+        }
+
+
 
         //call on repaint to update the view
         view.repaint();
+
+
     }
 
 

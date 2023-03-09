@@ -5,7 +5,9 @@ import no.uib.inf101.tetris.model.GameState;
 public interface ControllableTetrisModel {
     
 
-    /**
+
+
+	/**
      * Moves the current tetromino down one row
      * @param deltaRow
      * @param deltaCol
@@ -41,5 +43,18 @@ public interface ControllableTetrisModel {
      * This method gets called every tick in order to move the faling piece every tick
      */
     public void clockTick();
+
+    
+    /**
+     * Helper function to pause the game
+     */
+    public void pause();
+
+    /**
+     * Helper function to resume the game
+     */
+    public void resume();
+
+    // public void welcome();
 
 }

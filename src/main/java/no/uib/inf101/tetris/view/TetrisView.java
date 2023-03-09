@@ -19,6 +19,9 @@ public class TetrisView extends JPanel {
     static final double OUTERMARGIN = 2;
     static final double dimX = 0;
     static final double dimY = 0;
+    //get rowsRemoved from TetrisModel
+
+    
     
     // Constructor
     /**
@@ -26,6 +29,8 @@ public class TetrisView extends JPanel {
      * @param model
      */
     public TetrisView(ViewableTetrisModel model) {
+        int width = 600;
+        int height = 1920;
 
         colorTheme = new DefaultColorTheme();
         Color backgroundColor = colorTheme.getBackgroundColor();
@@ -33,7 +38,7 @@ public class TetrisView extends JPanel {
 
         this.model = model;
         this.setFocusable(true);
-        this.setPreferredSize(new Dimension(600, 1920));
+        this.setPreferredSize(new Dimension(width, height));
     }
 
   // The paintComponent method is called by the Java Swing framework every time
@@ -54,7 +59,7 @@ public class TetrisView extends JPanel {
      */
     public void drawGame(Graphics2D g) {
         //get color from colorTheme
-        Color frameColor = colorTheme.getFrameColor();
+        Color frameColor = colorTheme.getBackgroundColor();
         double margin = TetrisView.OUTERMARGIN;
         double x = TetrisView.dimX;
         double y = TetrisView.dimY;
@@ -78,6 +83,11 @@ public class TetrisView extends JPanel {
         }
         if(this.model.getGameState() == GameState.ACTIVE_STATE){
             frameCounter(g);
+
+        }
+        if(this.model.getGameState() == GameState.PAUSED){
+            drawPause(g);
+
         }
 
 
@@ -128,6 +138,30 @@ public class TetrisView extends JPanel {
 
 }
     /**
+     * Draw pause message if {@code model.getGameState() == GameState.PAUSED}
+     * @param g
+     */
+    public void drawPause(Graphics2D g) {
+        //get color from colorTheme
+        Color frameColor = colorTheme.gameOverColor();
+        double margin = TetrisView.OUTERMARGIN;
+        double x = TetrisView.dimX;
+        double y = TetrisView.dimY;
+
+        double width = this.getWidth() - 2 * margin;
+        double height = this.getHeight() - 2 * margin;
+        
+        Rectangle2D rect = new Rectangle2D.Double(x, y, width, height);
+
+        g.setColor(frameColor);
+        g.fill(rect);
+        g.setColor(Color.WHITE);
+        g.setFont(g.getFont().deriveFont(50.0f));
+        g.drawString("Paused", 215, 400);
+        g.drawString("Press 'P' to continue", 55, 500);
+    }
+
+    /**
      * Draws the frame counter. 
      * NOTE: The counter is static at 144 fps, and is only used for "testing purposes"
      * @param g
@@ -137,5 +171,7 @@ public class TetrisView extends JPanel {
         g.setFont(g.getFont().deriveFont(14.0f));
         g.drawString("FPS: 144", 10, 20);
     }
+
+
 
 }

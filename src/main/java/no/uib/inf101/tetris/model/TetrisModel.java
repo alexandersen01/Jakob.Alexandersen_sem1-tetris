@@ -15,6 +15,8 @@ public class TetrisModel implements ViewableTetrisModel, ControllableTetrisModel
     private TetrominoFactory factory;
     private Tetromino currentTetromino; //represents a falling tetromino
     public GameState state = GameState.ACTIVE_STATE;
+    //get rowsRemoved from TetrisBoard
+    public int rowsRemoved = 0;
 
     // Constructor with the parameter TetrisBoard
     public TetrisModel (TetrisBoard board, TetrominoFactory factory) {
@@ -90,7 +92,7 @@ public class TetrisModel implements ViewableTetrisModel, ControllableTetrisModel
             //do nothing
         }
         glueTetromino();
-        board.removeRow();
+        rowsRemoved += board.removeRow();
         newTetromino();
         return true;
     }
@@ -121,8 +123,19 @@ public class TetrisModel implements ViewableTetrisModel, ControllableTetrisModel
     }
 
     @Override
+    public void pause() {
+        state = GameState.PAUSED;
+    }
+
+
+    @Override
+    public void resume() {
+        state = GameState.ACTIVE_STATE;
+    }
+
+    @Override
     public int getTickTime() {
-        return 450;
+        return 450 - 5 * board.rowsRemoved;
     }
 
     @Override
@@ -131,7 +144,8 @@ public class TetrisModel implements ViewableTetrisModel, ControllableTetrisModel
         //if it cannot move down, glue the tetromino to the board
         if(!MoveTetromino(1, 0)) {
             glueTetromino();
-            board.removeRow();
+            rowsRemoved += board.removeRow();
+            rowsRemoved = Math.min(80, rowsRemoved);
             newTetromino();
         }
     }

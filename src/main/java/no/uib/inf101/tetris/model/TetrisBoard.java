@@ -11,6 +11,8 @@ import no.uib.inf101.grid.Grid;
 
 public class TetrisBoard extends Grid<Character> {
 
+    public int rowsRemoved = 0;
+
 
     /**
      * Create a new TetrisBoard with the given rows and cols
@@ -79,12 +81,12 @@ public class TetrisBoard extends Grid<Character> {
      * @return rows removed
      */
     public int removeRow(){
-        int rowsremoved = 0;
+
         int oldRow = rows() - 1;
         int newRow = rows() - 1;
         while (newRow >= 0){
             while(oldRow >= 0 && !rowContains(oldRow, '-')){
-                rowsremoved++;
+                rowsRemoved++;
                 oldRow--;
             }
             if(oldRow < 0){
@@ -96,10 +98,10 @@ public class TetrisBoard extends Grid<Character> {
             newRow--;
             oldRow--;
         }
-        return rowsremoved;
+        return rowsRemoved;
         
-
+        
     }
-
+    
 
 }

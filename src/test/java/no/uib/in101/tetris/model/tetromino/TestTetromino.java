@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import no.uib.inf101.grid.CellPosition;
 import no.uib.inf101.grid.GridCell;
+import no.uib.inf101.grid.GridDimension;
 import no.uib.inf101.tetris.model.tetromino.Tetromino;
 
 public class TestTetromino {
@@ -71,11 +72,40 @@ public void tetrominoIterationOfS() {
   }
 
 @Test
-public void moveTest(){
-  Tetromino tetro = Tetromino.newTetromino('S');
-  tetro = tetro.shiftedBy(10, 100);
+public void testMoveTwice() {
+
+  Tetromino tetro = Tetromino.newTetromino('T');
+  int initialV = 100;
+  int one = 1;
+  tetro = tetro.shiftedBy(10, initialV);
+  tetro = tetro.shiftedBy(0, one);
+  tetro = tetro.shiftedBy(0, one);
+  Tetromino tetro2 = Tetromino.newTetromino('T');
+  tetro2 = tetro2.shiftedBy(10, (initialV + 2 * one));
+  assertEquals(tetro, tetro2);
+
 }
 
+//write test to see if rotate works
+@Test
+public void testRotate() {
+
+  Tetromino tetro = Tetromino.newTetromino('T');
+  int initialV = 100;
+  int one = 1;
+
+  tetro = tetro.shiftedBy(10, initialV);
+  tetro = tetro.shiftedBy(0, one);
+  tetro = tetro.shiftedBy(0, one);
+  tetro = tetro.rotated();
+  Tetromino tetro2 = Tetromino.newTetromino('T');
+  tetro2 = tetro2.shiftedBy(10, (initialV + 2 * one));
+  tetro2 = tetro2.rotated();
+  assertEquals(tetro, tetro2);
+  
 
 
+  }
+
+  
 }
