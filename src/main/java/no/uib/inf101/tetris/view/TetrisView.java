@@ -29,8 +29,10 @@ public class TetrisView extends JPanel {
      * @param model
      */
     public TetrisView(ViewableTetrisModel model) {
-        int width = 600;
-        int height = 1920;
+
+        Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        int width = (int) screenSize.getWidth();
+        int height = (int) screenSize.getHeight();
 
         colorTheme = new DefaultColorTheme();
         Color backgroundColor = colorTheme.getBackgroundColor();
@@ -38,7 +40,7 @@ public class TetrisView extends JPanel {
 
         this.model = model;
         this.setFocusable(true);
-        this.setPreferredSize(new Dimension(width, height));
+        this.setPreferredSize(new Dimension(width/3, height));
     }
 
   // The paintComponent method is called by the Java Swing framework every time

@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Test;
 
 import no.uib.inf101.grid.CellPosition;
 import no.uib.inf101.grid.GridCell;
-import no.uib.inf101.grid.GridDimension;
 import no.uib.inf101.tetris.model.tetromino.Tetromino;
 
 public class TestTetromino {
@@ -102,7 +101,7 @@ public void testRotate() {
   tetro2 = tetro2.shiftedBy(10, (initialV + 2 * one));
   tetro2 = tetro2.rotated();
   assertEquals(tetro, tetro2);
-  
+
 
 
   }
