@@ -30,5 +30,7 @@ public interface ViewableTetrisModel {
      * @return The current game state
      */
     GameState getGameState();
+
+    int getrowsRemoved();
 }
 

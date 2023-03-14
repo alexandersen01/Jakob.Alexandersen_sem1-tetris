@@ -137,6 +137,11 @@ public class TetrisView extends JPanel {
             g.setColor(Color.WHITE);
             g.setFont(g.getFont().deriveFont(50.0f));
             g.drawString("Game Over!", 170, 400);
+            /**
+             * Draw the score
+             * NOTE: this value is almost completely arbitrary, and does NOT follow official tetris regualations
+             */
+            g.drawString("Your score is: " + model.getrowsRemoved(), 100, 500);
 
 }
     /**
