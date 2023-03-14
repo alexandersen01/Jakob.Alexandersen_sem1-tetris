@@ -135,7 +135,7 @@ public class TetrisModel implements ViewableTetrisModel, ControllableTetrisModel
 
     @Override
     public int getTickTime() {
-        return 450 - 15 * board.rowsRemoved;
+        return 450 - 9 * board.rowsRemoved;
     }
 
     @Override
