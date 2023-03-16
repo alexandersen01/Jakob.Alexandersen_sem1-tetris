@@ -75,7 +75,7 @@ public class TetrisBoard extends Grid<Character> {
         }
     }
 
-
+    
     /**
      * Removes a row and moves all the rows above it down
      * @return rows removed

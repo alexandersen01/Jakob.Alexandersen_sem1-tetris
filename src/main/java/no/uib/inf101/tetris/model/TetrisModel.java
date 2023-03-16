@@ -92,9 +92,10 @@ public class TetrisModel implements ViewableTetrisModel, ControllableTetrisModel
             //do nothing
         }
         glueTetromino();
-        rowsRemoved += board.removeRow();
+        board.removeRow();
         newTetromino();
         return true;
+        
     }
 
     /**
@@ -147,6 +148,7 @@ public class TetrisModel implements ViewableTetrisModel, ControllableTetrisModel
             rowsRemoved += board.removeRow();
             rowsRemoved = Math.min(80, rowsRemoved);
             newTetromino();
+
         }
     }
 

@@ -41,6 +41,7 @@ public class TetrisView extends JPanel {
         this.model = model;
         this.setFocusable(true);
         this.setPreferredSize(new Dimension(width/3, height));
+
     }
 
   // The paintComponent method is called by the Java Swing framework every time
@@ -51,6 +52,7 @@ public class TetrisView extends JPanel {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         drawGame(g2);
+
     }
 
 
@@ -90,6 +92,7 @@ public class TetrisView extends JPanel {
         if(this.model.getGameState() == GameState.PAUSED){
             drawPause(g);
 
+
         }
 
 
@@ -110,6 +113,7 @@ public class TetrisView extends JPanel {
             Color color = colorTheme.getCellColor(cell.value());
             g.setColor(color);
             g.fill(bounds);
+            
         }
     }
 
@@ -136,12 +140,8 @@ public class TetrisView extends JPanel {
             g.fill(rect);
             g.setColor(Color.WHITE);
             g.setFont(g.getFont().deriveFont(50.0f));
-            g.drawString("Game Over!", 170, 400);
-            /**
-             * Draw the score
-             * NOTE: this value is almost completely arbitrary, and does NOT follow official tetris regualations
-             */
-            g.drawString("Your score is: " + model.getrowsRemoved(), 100, 500);
+            Inf101Graphics.drawCenteredString(g, "Game Over!", OUTERMARGIN, OUTERMARGIN, this.getWidth() - 2 * OUTERMARGIN, this.getHeight() - 2 * OUTERMARGIN - 250);
+            Inf101Graphics.drawCenteredString(g, "You did great!", OUTERMARGIN, OUTERMARGIN, this.getWidth() - 2 * OUTERMARGIN, this.getHeight() - 2 * OUTERMARGIN - 100);
 
 }
     /**
@@ -164,8 +164,8 @@ public class TetrisView extends JPanel {
         g.fill(rect);
         g.setColor(Color.WHITE);
         g.setFont(g.getFont().deriveFont(50.0f));
-        g.drawString("Paused", 215, 400);
-        g.drawString("Press 'P' to continue", 55, 500);
+        Inf101Graphics.drawCenteredString(g, "Paused", OUTERMARGIN, OUTERMARGIN, this.getWidth() - 2 * OUTERMARGIN, this.getHeight() - 2 * OUTERMARGIN - 250);
+        Inf101Graphics.drawCenteredString(g, "Press 'P' to continue", OUTERMARGIN, OUTERMARGIN, this.getWidth() - 2 * OUTERMARGIN, this.getHeight() - 2 * OUTERMARGIN - 100);
     }
 
     /**
