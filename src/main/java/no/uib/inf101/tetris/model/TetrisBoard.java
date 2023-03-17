@@ -89,7 +89,16 @@ public class TetrisBoard extends Grid<Character> {
         while (newRow >= 0){
             while(oldRow >= 0 && !rowContains(oldRow, '-')){
                 rowsRemoved++;
-                score++;
+                if(rowsRemoved == 2){
+                    score += 300;
+                }
+                else if(rowsRemoved == 3){
+                    score += 500;
+                }
+                else if(rowsRemoved == 4){
+                    score += 800;
+                }
+                
                 oldRow--;
             }
             if(oldRow < 0){
