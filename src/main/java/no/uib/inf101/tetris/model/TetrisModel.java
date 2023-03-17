@@ -13,7 +13,7 @@ public class TetrisModel implements ViewableTetrisModel, ControllableTetrisModel
 
     private TetrisBoard board;
     private TetrominoFactory factory;
-    private Tetromino currentTetromino; //represents a falling tetromino
+    private Tetromino currentTetromino, shadow; //represents a falling tetromino
     public GameState state = GameState.ACTIVE_STATE;
     //get rowsRemoved from TetrisBoard
     public int rowsRemoved = 0;
@@ -156,5 +156,6 @@ public class TetrisModel implements ViewableTetrisModel, ControllableTetrisModel
     public int getrowsRemoved() {
         return rowsRemoved;
     }
+
     
 }

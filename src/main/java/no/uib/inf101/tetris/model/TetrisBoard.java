@@ -12,6 +12,7 @@ import no.uib.inf101.grid.Grid;
 public class TetrisBoard extends Grid<Character> {
 
     public int rowsRemoved = 0;
+    public static int score;
 
 
     /**
@@ -27,6 +28,7 @@ public class TetrisBoard extends Grid<Character> {
                 set(new CellPosition(i, j), '-');
             }
         }
+        this.score = 0;
     }
 
     public String prettyString(){
@@ -87,6 +89,7 @@ public class TetrisBoard extends Grid<Character> {
         while (newRow >= 0){
             while(oldRow >= 0 && !rowContains(oldRow, '-')){
                 rowsRemoved++;
+                score++;
                 oldRow--;
             }
             if(oldRow < 0){

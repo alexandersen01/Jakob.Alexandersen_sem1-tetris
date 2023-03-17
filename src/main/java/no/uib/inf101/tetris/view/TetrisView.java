@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 
 import no.uib.inf101.grid.GridCell;
 import no.uib.inf101.tetris.model.GameState;
+import no.uib.inf101.tetris.model.TetrisBoard;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -141,7 +142,7 @@ public class TetrisView extends JPanel {
             g.setColor(Color.WHITE);
             g.setFont(g.getFont().deriveFont(50.0f));
             Inf101Graphics.drawCenteredString(g, "Game Over!", OUTERMARGIN, OUTERMARGIN, this.getWidth() - 2 * OUTERMARGIN, this.getHeight() - 2 * OUTERMARGIN - 250);
-            Inf101Graphics.drawCenteredString(g, "You did great!", OUTERMARGIN, OUTERMARGIN, this.getWidth() - 2 * OUTERMARGIN, this.getHeight() - 2 * OUTERMARGIN - 100);
+            Inf101Graphics.drawCenteredString(g, "You cleared " + TetrisBoard.score + " lines!", OUTERMARGIN, OUTERMARGIN, this.getWidth() - 2 * OUTERMARGIN, this.getHeight() - 2 * OUTERMARGIN - 100);
 
 }
     /**
@@ -178,7 +179,6 @@ public class TetrisView extends JPanel {
         g.setFont(g.getFont().deriveFont(14.0f));
         g.drawString("FPS: 144", 10, 20);
     }
-
 
 
 }

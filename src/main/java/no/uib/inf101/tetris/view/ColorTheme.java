@@ -33,5 +33,5 @@ public interface ColorTheme {
      * @return a color
      */
     Color gameOverColor();
-    
+
 }
