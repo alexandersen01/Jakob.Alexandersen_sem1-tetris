@@ -11,7 +11,7 @@ import no.uib.inf101.grid.Grid;
 
 public class TetrisBoard extends Grid<Character> {
 
-    public int rowsRemoved = 0;
+    public static int rowsRemoved = 0;
     public static int score;
 
 

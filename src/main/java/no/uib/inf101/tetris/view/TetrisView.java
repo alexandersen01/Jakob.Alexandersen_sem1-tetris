@@ -142,7 +142,7 @@ public class TetrisView extends JPanel {
             g.setColor(Color.WHITE);
             g.setFont(g.getFont().deriveFont(50.0f));
             Inf101Graphics.drawCenteredString(g, "Game Over!", OUTERMARGIN, OUTERMARGIN, this.getWidth() - 2 * OUTERMARGIN, this.getHeight() - 2 * OUTERMARGIN - 250);
-            Inf101Graphics.drawCenteredString(g, "Your score is " + TetrisBoard.score, OUTERMARGIN, OUTERMARGIN, this.getWidth() - 2 * OUTERMARGIN, this.getHeight() - 2 * OUTERMARGIN - 100);
+            Inf101Graphics.drawCenteredString(g, "You cleared " + TetrisBoard.rowsRemoved + " lines", OUTERMARGIN, OUTERMARGIN, this.getWidth() - 2 * OUTERMARGIN, this.getHeight() - 2 * OUTERMARGIN - 100);
 
 }
     /**
